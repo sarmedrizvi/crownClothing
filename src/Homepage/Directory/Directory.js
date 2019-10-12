@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {sections} from '../Section.js'
+import {sections} from './Section.js'
 import {HomepageCard} from '../Menu/homepage-component.js'
 import  './directory.styles.scss';
 

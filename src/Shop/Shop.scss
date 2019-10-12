@@ -1,0 +1,20 @@
+.Collection{
+    display: grid;
+    margin: 2%;
+    
+
+.Title{
+    font-family: 'Grenze', serif;
+    width: 8rem;
+    cursor: pointer;
+   
+    &:hover{
+        box-shadow: 1px 1px black;
+        opacity: 0.2;
+    }
+}
+#Top{
+    font-size: 3rem;
+    width: 15%;
+}
+}
