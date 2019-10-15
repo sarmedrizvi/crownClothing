@@ -1,4 +1,9 @@
 body{
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Grenze', serif;
     padding: 20px 60px;
+    
+}
+
+*{
+    box-sizing: border-box;
 }
