@@ -1,5 +1,10 @@
-.signInsignUp{
+.signInSignUp{
     // display: grid;
-    // grid-template-columns: repeat(auto-fill,14em)
+    // grid-template-columns:repeat(auto-fill,380px);
+    // grid-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
     
 }

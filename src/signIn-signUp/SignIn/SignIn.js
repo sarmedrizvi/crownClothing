@@ -36,7 +36,7 @@ export class SignIn extends Component
                     required
                     type='email'
                     label='Email'
-                    handleChange={(event)=> (this.setState({email:event.target.value}) )}
+                    handleChange={this.HandleChange}
                     length={this.state.email}
                 />
                 <Input 
@@ -50,7 +50,7 @@ export class SignIn extends Component
                 <div className='Button'>
                 <InputButton 
                     type='submit'>Sign In</InputButton>
-                <InputButton onClick={SignInWithGoogle} isGoogleButton >Sign In With Google</InputButton>
+                <InputButton onClick={SignInWithGoogle} isGoogleButton>Sign In With Google</InputButton>
                 </div>
                 </form>
             </div>
