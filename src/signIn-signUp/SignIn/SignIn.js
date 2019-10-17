@@ -2,22 +2,32 @@ import React,{Component} from 'react'
 import './SignIn.scss';
 import {Input} from './Input/Input';
 import {InputButton} from './Input-Button/Button';
-import {SignInWithGoogle} from '../../firebase/firebase.utils'
+import {auth,SignInWithGoogle} from '../../firebase/firebase.utils'
 export class SignIn extends Component
 {
     state={
         email:'',
         password:''
     }
-    HandleSubmit=event=>{
+    HandleSubmit=async event=>{
+        const {email,password}=this.state;
         event.preventDefault();
-       this.setState(
-        {
-            email:'',
-            password: ''
+        try{
+        await auth.signInWithEmailAndPassword(email,password);
+        this.setState(
+            {
+                email:'',
+                password: ''
+            }
+           ) 
         }
-       )        
+        catch(error)
+        {
+            console.error(error);
+        }
     }
+             
+    
     HandleChange=event=>{
        const {name,value}= event.target;
        this.setState({[name]:value});
@@ -37,7 +47,7 @@ export class SignIn extends Component
                     type='email'
                     label='Email'
                     handleChange={this.HandleChange}
-                    length={this.state.email}
+                    
                 />
                 <Input 
                     name='password' 

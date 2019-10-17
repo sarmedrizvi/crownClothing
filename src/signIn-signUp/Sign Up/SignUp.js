@@ -6,14 +6,14 @@ import './SignUp.scss'
 
 
 export class SignUp extends React.Component {
-    
+
     state = {
         displayName: '',
         email: '',
         password: '',
         confirmPassword: ''
     }
-     handleSubmit = async event => {
+    handleSubmit = async event => {
         event.preventDefault();
         const { displayName, email, password, confirmPassword } = this.state;
         if (password !== confirmPassword) {
@@ -21,8 +21,8 @@ export class SignUp extends React.Component {
             return;
         }
         try {
-            const { user } = auth.createUserWithEmailAndPassword(email, password);
-            await createUserProfileDocument(user, { displayName });
+            const { user } = await auth.createUserWithEmailAndPassword(email, password);
+            createUserProfileDocument(user, { displayName });
             this.setState(
                 {
                     displayName: '',
@@ -31,21 +31,22 @@ export class SignUp extends React.Component {
                     confirmPassword: ''
                 }
             )
+
         }
         catch (error) {
-            console.error(error);
+            alert(error.message);
         }
     }
-     handleChange=event=>{
-        const {name,value}=event.target;
-        this.setState({[name]:value});
+    handleChange = event => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     }
-    
+
 
     render() {
         const { displayName, email, password, confirmPassword } = this.state;
         return (
-          
+
             <div className='sign-up'>
                 <h2 className='title'>I do not have a account</h2>
                 <span>Sign up with ypur email and password</span>
@@ -60,7 +61,7 @@ export class SignUp extends React.Component {
                     />
                     <Input
                         type='email'
-                        name='Email'
+                        name='email'
                         value={email}
                         handleChange={this.handleChange}
                         required
