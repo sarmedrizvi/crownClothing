@@ -1,4 +1,7 @@
+import {UserTypes} from './User.type'
+
+
 export const SetCurrentUser =user=>({
-    type:'SET_CURRENT_USER',
+    type: UserTypes.setCurrentUser,
     Payload:user
 })
