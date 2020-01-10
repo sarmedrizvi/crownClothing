@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import './SignIn.scss';
 import { Input } from './Input/Input';
 import { InputButton } from './Input-Button/Button';
-import { Link, Route } from 'react-router-dom';
+// import { Link, Route } from 'react-router-dom';
 import { auth, SignInWithGoogle } from '../../firebase/firebase.utils'
-import { Homepage } from '../../Homepage/homepage'
+// import { Homepage } from '../../Homepage/homepage'
 
 export class SignIn extends Component {
     state = {
@@ -26,7 +26,7 @@ export class SignIn extends Component {
         catch (error) {
             console.error(error);
         }
-        
+
     }
 
 

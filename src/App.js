@@ -19,14 +19,10 @@ class App extends React.Component {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot(snapShot => {
-
-          SetCurrentUser
-            ({
+          SetCurrentUser({
               id: snapShot.id,
               ...snapShot.data()
             })
-
-
 
         })
       }
@@ -44,7 +40,6 @@ class App extends React.Component {
   }
 
   render() {
-{var a=1}
     return (
       <div>
         <Header />

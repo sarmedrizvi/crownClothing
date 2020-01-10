@@ -1,7 +1,7 @@
-.inputButton{
-  min-width: 170px;
+.inputButton {
+  min-width: 160px;
   width: auto;
-   height: 50px;
+  height: 50px;
   letter-spacing: 0.5px;
   line-height: 50px;
   padding: 0 35px 0 35px;
@@ -9,23 +9,36 @@
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: 'Grenze', serif;
+  font-family: "Grenze", serif;
   font-weight: bolder;
   border: none;
   cursor: pointer;
-
+  display: flex;
+  justify-content: center;
   &:hover {
     background-color: white;
     color: black;
     border: 1px solid black;
   }
-  &.GoogleButton{
+  &.GoogleButton {
     background-color: #4285f4;
     color: white;
 
-    &:hover{
+    &:hover {
       background-color: #2765ca;
       border: none;
+    }
+  }
+
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: 1px solid white;
     }
   }
 }

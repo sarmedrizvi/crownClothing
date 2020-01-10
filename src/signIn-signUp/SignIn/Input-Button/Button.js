@@ -2,12 +2,13 @@ import React from 'react';
 import './Button.scss'
 
 
-export const InputButton=({children,isGoogleButton,...otherProps})=>(
+export const InputButton = ({ onClick, children, inverted, isGoogleButton, ...otherProps }) => (
 
     <button
-    className={`${isGoogleButton? 'GoogleButton' : ''} inputButton`}
-    {...otherProps}
+        onClick={onClick}
+        className={`${inverted ? 'inverted' : ''} ${isGoogleButton ? 'GoogleButton' : ''} inputButton`}
+        {...otherProps}
     >
-    {children}
+        {children}
     </button>
 )
