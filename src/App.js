@@ -8,6 +8,7 @@ import Header from './Header/Header.js'
 import { SignInsignUp } from './signIn-signUp/signIn-signUp'
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { SetCurrentUser } from './Redux/User/User.Actions'
+import CheckOutPage from './pages/Checkout.component';
 class App extends React.Component {
   state = {
     currentUser: null
@@ -46,6 +47,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Homepage} ></Route>
           <Route exact path='/Shop' component={Shop}></Route>
+          <Route exact path='/Checkout' component={CheckOutPage}></Route>
           <Route exact path='/SignIn' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInsignUp />)}></Route>
         </Switch>
       </div>
