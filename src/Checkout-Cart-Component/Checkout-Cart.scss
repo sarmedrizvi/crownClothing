@@ -23,7 +23,14 @@
   }
 
   .quantity {
-    padding-left: 20px;
+    .value {
+      font-size: 23px;
+    }
+
+    .arrow {
+      margin: 12px;
+      cursor: pointer;
+    }
   }
 
   .remove-button {
