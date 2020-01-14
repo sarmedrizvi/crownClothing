@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import './Checkout.styles.scss'
 import { selectCartTotal, selectCartItems } from '../Redux/Cart/Cart.Selector';
 import CheckoutCart from '../Checkout-Cart-Component/Checkout-Cart';
+import StripeCheckoutButton from '../Stripe-Button/Stripe-Button-Component'
+
 const CheckOutPage = ({ totalCost, cartItems }) => (
     <div className='checkout-page'>
         <div className='checkout-header'>
@@ -30,9 +32,15 @@ const CheckOutPage = ({ totalCost, cartItems }) => (
             ))
         }
         <div className='total'>
-            <span>Total ${totalCost}</span>
+            <span className='totalAlign'>Total</span>
+            <span>{totalCost} Rs</span>
         </div>
-
+        <div className='test-warning'>
+            *Please use the following test credit card for payments*
+            <br />
+            4242 4242 4242 4242 - Exp:01/20 - CVV:123
+        </div>
+        <StripeCheckoutButton price={totalCost} />
     </div>
 )
 
