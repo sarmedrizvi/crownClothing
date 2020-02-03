@@ -32,3 +32,10 @@ export const sections = [
     linkUrl: 'shop/mens'
   }
 ];
+
+// export async function sections() {
+//   const a = await fetch('http://localhost:3000/')
+//   const b = a.json();
+//   console.log(b,'s')
+//   return [];
+// }

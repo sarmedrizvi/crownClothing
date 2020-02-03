@@ -17,15 +17,19 @@ const Header = ({ currentUser, hidden }) => (
             <Logo className='logo' />
         </Link>
         <div className='options'>
-            <Link className='option' to='/shop'>
-                Shop
-            </Link>
+
             {/* <Link className='option'>
                 Contact
             </Link> */}
             {currentUser ?
-                (<div onClick={() => auth.signOut()} className='option'>
-                    Sign Out
+                (<div className='flex'>
+                    <Link className='option' to='/shop'>
+                        Shop
+                    </Link>
+                    <div onClick={() => auth.signOut()} className='option'>
+                        Sign Out
+                </div>
+                <CartLogo />
                 </div>)
                 : (
                     <Link to='/signin' className='option'>
@@ -33,7 +37,7 @@ const Header = ({ currentUser, hidden }) => (
                     </Link>)
 
             }
-            <CartLogo />
+            
         </div>
         {hidden ? null : <CardDropDown />}
     </div>

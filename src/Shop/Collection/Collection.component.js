@@ -6,10 +6,11 @@ import CardComponent from '../CardComponent/CardComponent';
 
 
 const Collection = ({ Collection }) => {
-    const { title, items } = Collection
+    const { categoryname, items } = Collection
     return (
         <div className='collection-page'>
-            <h1 className='title'>{title}</h1>
+            <h1 className='title'>{categoryname}</h1>
+           
             <div className='items'>
                 {
                     items.map(item => <CardComponent item={item} />)
