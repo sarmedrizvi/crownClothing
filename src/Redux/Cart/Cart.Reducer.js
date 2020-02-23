@@ -4,8 +4,9 @@ import { AddItemToCart, ClearItem, RemoveItemToCart } from './Cart.Utils'
 
 const INTIAL_STATE = {
     hidden: true,
-    cartItems: []
+    cartItems:[]
 }
+
 const CartReducer = (state = INTIAL_STATE, action) => {
     switch (action.type) {
         case CartTypes.TOGGLE_CART_HIDDEN:
@@ -27,6 +28,11 @@ const CartReducer = (state = INTIAL_STATE, action) => {
             return {
                 ...state,
                 cartItems: RemoveItemToCart(state.cartItems, action.payload)
+            }
+        case CartTypes.CHANGE_ALL_ITEMS:
+            return {
+                ...state,
+                cartItems: action.payload
             }
         default:
             return state;

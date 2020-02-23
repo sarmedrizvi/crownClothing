@@ -3,9 +3,11 @@ import { PreviewComponent } from '../Shop/preview-component/Preview-component';
 import { createStructuredSelector } from 'reselect';
 import { collectionToArray } from '../Redux/Shop/Shop.Selector'
 import { connect } from 'react-redux';
-import { ShopAction } from '../Redux/Shop/Shop.Action';
+
+
 
 class CollectionOverview extends React.Component {
+
     render() {
         const { data } = this.props
         return (
@@ -23,6 +25,7 @@ class CollectionOverview extends React.Component {
         )
     }
 }
+
 
 const mapStateToProp = () => createStructuredSelector({
     data: collectionToArray

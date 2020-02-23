@@ -19,6 +19,11 @@ export const removeItem = (item) => ({
     payload: item,
 })
 
+export const changeAllItems = (item) => ({
+    type: CartTypes.CHANGE_ALL_ITEMS,
+    payload: item,
+})
+
 
 
 

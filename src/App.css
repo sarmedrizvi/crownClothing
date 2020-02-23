@@ -1,9 +1,15 @@
 body{
-    font-family: 'Grenze', serif;
-    padding: 20px 60px;
+    font-family: 'Grenze', serif !important;
+    /* padding: 20px 60px 00px 60px; */
     
 }
 
 *{
     box-sizing: border-box;
+}
+
+.last{
+    padding: 20vh 5vh;
+    /* display: flex; */
+    /* justify-content: center; */
 }

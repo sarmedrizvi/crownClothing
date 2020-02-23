@@ -9,35 +9,41 @@ import CardDropDown from '../Cart/Cart.dropdown'
 import { createStructuredSelector } from 'reselect'
 import { selectCurrentUser } from '../Redux/User/User.Selector'
 import { selectCartHidden } from '../Redux/Cart/Cart.Selector';
+import { SetCurrentUser } from '../Redux/User/User.Actions';
+import { changeAllItems } from '../Redux/Cart/Cart.Actions';
+// import SliderDrawer from './Slider/Slider-Drawer';
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, dispatch }) => (
 
     <div className="Header">
         <Link className='logo-container' to="/">
             <Logo className='logo' />
         </Link>
-        <div className='options'>
 
-            {/* <Link className='option'>
-                Contact
-            </Link> */}
-            {currentUser ?
-                (<div className='flex'>
-                    <Link className='option' to='/shop'>
-                        Shop
-                    </Link>
-                    <div onClick={() => auth.signOut()} className='option'>
-                        Sign Out
-                </div>
-                <CartLogo />
+        <div className='options '>
+
+            {currentUser.id ?
+                (<div className='option-signout'>
+
+                    <div onClick={() => { dispatch(SetCurrentUser({})); }} className='option'>
+                        SignOut
+                     </div>
+
                 </div>)
-                : (
+                : (<div className='option-signout'>
+
+
                     <Link to='/signin' className='option'>
-                        Sign In
-                    </Link>)
+                        SignIn
+                    </Link>
+
+                </div>)
 
             }
-            
+            <Link className='option' to='/shop'>
+                Shop
+            </Link>
+            <CartLogo />
         </div>
         {hidden ? null : <CardDropDown />}
     </div>

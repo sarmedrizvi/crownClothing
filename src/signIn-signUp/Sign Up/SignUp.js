@@ -1,34 +1,63 @@
 import React from 'react'
 import { Input } from '../SignIn/Input/Input'
 import { InputButton } from '../SignIn/Input-Button/Button'
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils'
+// import { auth, createUserProfileDocument } from '../../firebase/firebase.utils'
 import './SignUp.scss'
+import { SetCurrentUser } from '../../Redux/User/User.Actions'
+import { connect } from 'react-redux'
 
 
-export class SignUp extends React.Component {
+class SignUp extends React.Component {
 
     state = {
+        label: '',
         displayName: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        address: '',
+        city: '',
+        postalCode: '',
+        country: '',
+        phone: ''
     }
-    handleSubmit = async event => {
-        event.preventDefault();
-        const { displayName, email, password, confirmPassword } = this.state;
-        if (password !== confirmPassword) {
-            alert("Password don't match")
-            return;
-        }
+    handleSubmit = () => {
+
         try {
-            const { user } = await auth.createUserWithEmailAndPassword(email, password);
-            createUserProfileDocument(user, { displayName });
+            const { displayName, email, password, confirmPassword, address, phone, city, country, postalCode } = this.state;
+            fetch('http://localhost:3000/signup', {
+                method: 'post',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    displayName: displayName,
+                    email: email,
+                    password: password,
+                    confirmPassword: confirmPassword,
+                    address: address,
+                    city: city,
+                    postalCode: postalCode,
+                    country: country,
+                    phone: phone,
+                })
+            }).then(res => res.json())
+                .then(customer => {
+                    customer == 'Something is wrong' ? this.setState({ label: 'Something is wrong' }) :
+                        this.props.setUser(customer)
+                }
+
+                )
+
             this.setState(
                 {
                     displayName: '',
                     email: '',
                     password: '',
-                    confirmPassword: ''
+                    confirmPassword: '',
+                    address: '',
+                    city: '',
+                    postalCode: '',
+                    country: '',
+                    phone: ''
                 }
             )
 
@@ -37,6 +66,7 @@ export class SignUp extends React.Component {
             alert(error.message);
         }
     }
+
     handleChange = event => {
         const { name, value } = event.target;
         this.setState({ [name]: value });
@@ -44,13 +74,13 @@ export class SignUp extends React.Component {
 
 
     render() {
-        const { displayName, email, password, confirmPassword } = this.state;
+        const { label, displayName, email, password, confirmPassword, address, phone, city, country, postalCode } = this.state;
         return (
 
-            <div className='sign-up'>
+            <form className='sign-up'>
                 <h2 className='title'>I do not have a account</h2>
-                <span>Sign up with ypur email and password</span>
-                <form className='sign-up-form' onSubmit={this.handleSubmit}>
+                <span>Sign up with your email and password</span>
+                <div className='sign-up-form'>
                     <Input
                         type='text'
                         name='displayName'
@@ -83,10 +113,56 @@ export class SignUp extends React.Component {
                         required
                         label='Confirm Password'
                     />
-                    <InputButton type='submit'>Sign Up</InputButton>
-                </form>
-            </div>
+                    <Input
+                        type='address'
+                        name='address'
+                        value={address}
+                        handleChange={this.handleChange}
+                        required
+                        label='Address'
+                    />
+                    <Input
+                        type='text'
+                        name='city'
+                        value={city}
+                        handleChange={this.handleChange}
+                        required
+                        label='City'
+                    />
+                    <Input
+                        type='text'
+                        name='country'
+                        value={country}
+                        handleChange={this.handleChange}
+                        required
+                        label='Country'
+                    />
+                    <Input
+                        type='text'
+                        name='postalCode'
+                        value={postalCode}
+                        handleChange={this.handleChange}
+                        required
+                        label='Postal Code'
+                    />
+                    <Input
+                        type='tel'
+                        name='phone'
+                        value={phone}
+                        handleChange={this.handleChange}
+                        required
+                        label='Phone Number Format: 0323-3232664'
+                        pattern="[0-9]{4}-[0-9]{7}"
+                    />
+                    <label>{label}</label>
+                    <InputButton type='submit' onClick={this.handleSubmit}>Sign Up</InputButton>
+                </div>
+            </form>
         )
     }
 
 }
+const dispatchToProp = (dispatch) => ({
+    setUser: user => dispatch(SetCurrentUser(user))
+})
+export default connect(null, dispatchToProp)(SignUp)

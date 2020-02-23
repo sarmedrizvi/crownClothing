@@ -1,7 +1,7 @@
-import {UserTypes} from './User.type'
+import { UserTypes } from './User.type'
 
 
-export const SetCurrentUser =user=>({
+export const SetCurrentUser = user => ({
     type: UserTypes.setCurrentUser,
-    Payload:user
+    Payload: user
 })

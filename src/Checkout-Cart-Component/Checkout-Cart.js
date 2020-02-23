@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { clearItem, addItem, removeItem } from '../Redux/Cart/Cart.Actions';
 const CheckoutCart = ({ cartItem, clearItem, removeItem, addItem }) => {
     const { productname, unitprice, quantity, imageUrl,productid } = cartItem;
-    console.log(cartItem)
+  
     return (
         <div className='checkout-item'>
             <div className='image-container'>

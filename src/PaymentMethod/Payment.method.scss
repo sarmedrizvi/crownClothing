@@ -1,0 +1,34 @@
+.payment {
+	display: flex;
+	flex-direction: column;
+  justify-content: space-between;
+  .spinner{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+	label{
+		color: red;
+		font-size: large;
+	}
+  .payment-method {
+    display: flex;
+    flex-wrap: wrap;
+
+    .image {
+      width: 100px;
+      height: 90px;
+    }
+    .payment-method-all {
+      padding: 20px;
+      display: grid;
+      background-color: rgba(209, 204, 204, 0.205);
+      margin: 10px 5px;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+    }
+  }
+}

@@ -5,8 +5,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black;
     cursor: pointer;
-  
+    
     .shopping-icon {
       width: 24px;
       height: 24px;
@@ -18,5 +19,6 @@
       font-weight: bold;
       bottom: 12px;
     }
+    
   }
   

@@ -5,17 +5,13 @@ import { createStructuredSelector } from 'reselect';
 import { selectDirectorySection } from '../../Redux/Directory/Directory.Selector.js';
 import { connect } from 'react-redux';
 import { AddCategories } from '../../Redux/Directory/Directory.Action.js';
-import { ShopAction } from '../../Redux/Shop/Shop.Action.js';
+import { Spinner } from '../../Spinner/Spinner.component.js';
 
 class Directory extends React.Component {
     componentDidMount() {
         fetch('http://localhost:3000/categories')
             .then(res => res.json())
             .then(data => this.props.AddCategories(data))
-
-        fetch('http://localhost:3000/categoriesProduct')
-            .then(res => res.json())
-            .then(data => { this.props.addItem(data); })
 
     }
     render() {
@@ -28,7 +24,9 @@ class Directory extends React.Component {
                         <HomepageCard key={sample.categoryid} title={sample.categoryname} picture={`https://i.picsum.photos/id/${sample.categoryid + 20}/200/200.jpg`} link={sample.link} />
                     ))
                     :
-                    <span>Loading...</span>
+                    <div className='spinner'>
+                        <Spinner />
+                    </div>
                 }
             </div>
         )
@@ -42,7 +40,6 @@ const mapStateToProp = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
     AddCategories: user => dispatch(AddCategories(user)),
-    addItem: item => (dispatch(ShopAction(item)))
 })
 
 export default connect(mapStateToProp, mapDispatchToProps)(Directory)

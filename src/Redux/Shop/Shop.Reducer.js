@@ -1,7 +1,5 @@
 import { ShopTypes } from "./Shop.Types";
 
-// import { SHOP_DATA } from "./ShopData";
-
 const INITIAL_STATE = {
     shopData: {}
 }

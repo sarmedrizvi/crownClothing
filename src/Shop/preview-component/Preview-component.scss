@@ -7,10 +7,15 @@
   .Title {
     font-size: 28px;
     margin-bottom: 30px;
+    align-self: center;
   }
   .Preview {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    // display: flex;
+    // flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,20em);
+    justify-content: center;
+    grid-gap: 10px;
+    
   }
 }
